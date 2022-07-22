@@ -1,8 +1,6 @@
-package Algoritmia.Array;
-
 import java.util.Scanner;
 
-public class identificadorDeMatrices {
+public class app {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int valor = 0;
