@@ -4,16 +4,16 @@ public class app {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int valor = 0;
-        welcome();
+        welcome();   // mensaje de bienvenida
         while(valor != 2){
             try{
                 valor = menu();
                 switch (valor){
                     case 1:
-                        body();
+                        body();  // programa clasificador de matrices
                         break;
                     case 2:
-                        good_bye();
+                        good_bye();  // mensaje de despedida
                         break;
                     default:
                         System.out.println("Digite 1 o 2");
@@ -21,7 +21,7 @@ public class app {
                 }
             }catch(Exception e){
                 System.out.println("Digite un número");
-                entrada.next();
+                entrada.next();  // borrar lo que digito el usuario
             }
         }
     }
@@ -55,7 +55,10 @@ public class app {
             col = entrada.nextInt();
         }while(col <= 0);
 
+        // crear matriz
         double [][] matriz = new double [fil][col];
+
+        // llenar matriz
         System.out.println("\nMatriz de dimensión "+fil+"x"+col);
         for (int i = 0; i < fil; i++) {
             for (int j = 0; j < col; j++) {
@@ -64,6 +67,8 @@ public class app {
             }
         }
         System.out.println();
+
+        //Imprimir matriz
         System.out.print("A =  ");
         for (int i = 0; i < fil; i++) {
             if (i==0) System.out.print("| ") ;
@@ -73,14 +78,27 @@ public class app {
             }
             System.out.println("\t|");
         }
-        System.out.println("\n******");
+        //Fin imprimir matriz
+
+        //Imprimir tipo de matriz
+        System.out.println("\n******************************************");
+
+        // Reconocimiento del tipo
+
+        // Si es una matriz fila
         if(fil == 1 && col > 1){
-            System.out.println("Matriz fila");
-        }else if (col == 1 && fil > 1){
-            System.out.println("Matriz columna");
-        }else if (fil != col){
-            System.out.println("Matriz rectangular");
+            System.out.println("Matriz fila"); // Frank
+        }
+        // Si es una matriz columna
+        else if(col == 1 && fil > 1){
+            System.out.println("Matriz columna"); // Frank
+        }
+        // Si es una matriz rectangular
+        else if (fil != col){
+            System.out.println("Matriz rectangular"); // samira
             int count_ceros = 0;
+            // 0  0  0      (0,0)  (0,1) (0,2)
+            // 0  0  0      (1,0)  (1,1) (1,2)
             for (int i = 0; i < fil; i++) {
                 for (int j = 0; j < col; j++) {
                     if(matriz[i][j]==0){
@@ -88,12 +106,14 @@ public class app {
                     }
                 }
             }
+            // Si es una matriz rectangular nula
             if(count_ceros == fil*col){
-                System.out.println("Matriz nula");
+                System.out.println("Matriz nula"); // samira
             }
         }
+        // Si es una matriz cuadrada
         else{
-            System.out.println("Matriz cuadrada");
+            System.out.println("Matriz cuadrada"); // kevin
             int count_ceros = 0;
             int count_matriz_inferior = 0;
             int count_matriz_superior = 0;
@@ -103,9 +123,9 @@ public class app {
                     if(matriz[i][j]==0){
                         count_ceros++;
                     }
-                    //1 0 0     0,0 0,1 0,2
-                    //2 5 0     1,0 1,1 1,2
-                    //3 4 9     2,0 2,1 2,2
+                    //1 0 0     (0,0) (0,1) (0,2)
+                    //2 5 0     (1,0) (1,1) (1,2)
+                    //3 4 9     (2,0) (2,1) (2,2)
                     if(i > j && matriz[i][j] == 0){
                         count_matriz_superior++;
                     }
@@ -117,10 +137,12 @@ public class app {
                     }
                 }
             }
-
+            // Si es una matriz cuadrada nula
             if(count_ceros == fil*col){
-                System.out.println("Matriz nula");
+                System.out.println("Matriz nula");  // kevin
             }else{
+
+                // Si es una matriz diagonal
                 if(count_matriz_inferior == (fil*fil - fil)/2 && count_matriz_superior == (fil*fil - fil)/2){
                     int count_iguales = 0;
                     int count_identidad = 0;
@@ -135,22 +157,31 @@ public class app {
                     }
                     if (count_iguales == fil){
                         if(count_identidad == fil){
-                            System.out.println("Matriz identidad");
+                            System.out.println("Matriz identidad"); // cristian
                         }else{
-                            System.out.println("Matriz escalar");
+                            System.out.println("Matriz escalar");  // cristien
                         }
                     }else{
-                        System.out.println("Matriz diagonal");
+                        System.out.println("Matriz diagonal");  // cristian
                     }
                 }
+
+                //Si es una matriz triangular inferior
                 else if (count_matriz_inferior == (fil*fil - fil)/2 ){
-                    System.out.println("Matriz triangular inferior");
-                }else if (count_matriz_superior == (fil*fil - fil)/2){
-                    System.out.println("Matriz triangular superior");
+                    System.out.println("Matriz triangular inferior"); // hemsy
                 }
+
+                //Si es una matriz triangular superior
+                else if (count_matriz_superior == (fil*fil - fil)/2){
+                    System.out.println("Matriz triangular superior");  // hemsy
+                }
+                // t. inferior   |  t. superior
+                //   1 0 0            7  6  8
+                //   2 5 0            0  9  5
+                //   3 4 9            0  0  4
             }
         }
-        System.out.println("******");
+        System.out.println("******************************************");
     }
     public  static void good_bye(){
         System.out.println("\nGracias por usar la aplicación de identificación de matrices");
