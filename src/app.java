@@ -4,16 +4,16 @@ public class app {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int valor = 0;
-        welcome();
+        welcome();   // mensaje de bienvenida
         while(valor != 2){
             try{
                 valor = menu();
                 switch (valor){
                     case 1:
-                        body();
+                        body();  // programa clasificador de matrices
                         break;
                     case 2:
-                        good_bye();
+                        good_bye();  // mensaje de despedida
                         break;
                     default:
                         System.out.println("Digite 1 o 2");
@@ -21,7 +21,7 @@ public class app {
                 }
             }catch(Exception e){
                 System.out.println("Digite un número");
-                entrada.next();
+                entrada.next();  // borrar lo que digito el usuario
             }
         }
     }
@@ -74,13 +74,16 @@ public class app {
             System.out.println("\t|");
         }
         System.out.println("\n******");
+        // Reconocimiento del tipo
         if(fil == 1 && col > 1){
-            System.out.println("Matriz fila");
+            System.out.println("Matriz fila"); // Frank
         }else if (col == 1 && fil > 1){
-            System.out.println("Matriz columna");
+            System.out.println("Matriz columna"); // frank
         }else if (fil != col){
-            System.out.println("Matriz rectangular");
+            System.out.println("Matriz rectangular"); // samira
             int count_ceros = 0;
+            // 0  0  0      (0,0)  (0,1) (0,2)
+            // 0  0  0      (1,0)  (1,1) (1,2)
             for (int i = 0; i < fil; i++) {
                 for (int j = 0; j < col; j++) {
                     if(matriz[i][j]==0){
@@ -89,11 +92,11 @@ public class app {
                 }
             }
             if(count_ceros == fil*col){
-                System.out.println("Matriz nula");
+                System.out.println("Matriz nula"); // samira
             }
         }
         else{
-            System.out.println("Matriz cuadrada");
+            System.out.println("Matriz cuadrada"); // kevin
             int count_ceros = 0;
             int count_matriz_inferior = 0;
             int count_matriz_superior = 0;
@@ -119,7 +122,7 @@ public class app {
             }
 
             if(count_ceros == fil*col){
-                System.out.println("Matriz nula");
+                System.out.println("Matriz nula");  // kevin
             }else{
                 if(count_matriz_inferior == (fil*fil - fil)/2 && count_matriz_superior == (fil*fil - fil)/2){
                     int count_iguales = 0;
@@ -135,19 +138,23 @@ public class app {
                     }
                     if (count_iguales == fil){
                         if(count_identidad == fil){
-                            System.out.println("Matriz identidad");
+                            System.out.println("Matriz identidad"); // cristian
                         }else{
-                            System.out.println("Matriz escalar");
+                            System.out.println("Matriz escalar");  // cristien
                         }
                     }else{
-                        System.out.println("Matriz diagonal");
+                        System.out.println("Matriz diagonal");  // cristian
                     }
                 }
                 else if (count_matriz_inferior == (fil*fil - fil)/2 ){
-                    System.out.println("Matriz triangular inferior");
+                    System.out.println("Matriz triangular inferior"); // hemsy
                 }else if (count_matriz_superior == (fil*fil - fil)/2){
-                    System.out.println("Matriz triangular superior");
-                }
+                    System.out.println("Matriz triangular superior");  // hemsy
+                } 
+                // t. inferior   |  t. superior
+                //   1 0 0            7  6  8
+                //   2 5 0            0  9  5
+                //   3 4 9            0  0  4
             }
         }
         System.out.println("******");
