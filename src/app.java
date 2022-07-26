@@ -85,28 +85,36 @@ public class app {
 
         // Reconocimiento del tipo
 
+
+        //Si es una matriz nula
+        int count_ceros = 0;
+        // 0  0  0      (0,0)  (0,1) (0,2)
+        // 0  0  0      (1,0)  (1,1) (1,2)
+        for (int i = 0; i < fil; i++) {
+            for (int j = 0; j < col; j++) {
+                if(matriz[i][j]==0){
+                    count_ceros++;
+                }
+            }
+        }
+
         // Si es una matriz fila
         if(fil == 1 && col > 1){
             System.out.println("Matriz fila"); // Frank
+            if(count_ceros == fil*col){
+                System.out.println("Matriz nula");
+            }
         }
         // Si es una matriz columna
         else if(col == 1 && fil > 1){
             System.out.println("Matriz columna"); // Frank
+            if(count_ceros == fil*col){
+                System.out.println("Matriz nula");
+            }
         }
         // Si es una matriz rectangular
         else if (fil != col){
             System.out.println("Matriz rectangular"); // samira
-            int count_ceros = 0;
-            // 0  0  0      (0,0)  (0,1) (0,2)
-            // 0  0  0      (1,0)  (1,1) (1,2)
-            for (int i = 0; i < fil; i++) {
-                for (int j = 0; j < col; j++) {
-                    if(matriz[i][j]==0){
-                        count_ceros++;
-                    }
-                }
-            }
-            // Si es una matriz rectangular nula
             if(count_ceros == fil*col){
                 System.out.println("Matriz nula"); // samira
             }
@@ -114,15 +122,11 @@ public class app {
         // Si es una matriz cuadrada
         else{
             System.out.println("Matriz cuadrada"); // kevin
-            int count_ceros = 0;
             int count_matriz_inferior = 0;
             int count_matriz_superior = 0;
             double [] diagonal_datos = new double[fil];
             for (int i = 0; i < fil; i++) {
                 for (int j = 0; j < col; j++) {
-                    if(matriz[i][j]==0){
-                        count_ceros++;
-                    }
                     //1 0 0     (0,0) (0,1) (0,2)
                     //2 5 0     (1,0) (1,1) (1,2)
                     //3 4 9     (2,0) (2,1) (2,2)
