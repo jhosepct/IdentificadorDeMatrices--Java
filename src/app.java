@@ -126,11 +126,11 @@ public class app {
                     //1 0 0     (0,0) (0,1) (0,2)
                     //2 5 0     (1,0) (1,1) (1,2)
                     //3 4 9     (2,0) (2,1) (2,2)
-                    if(i > j && matriz[i][j] == 0){
-                        count_matriz_superior++;
-                    }
                     if(i < j && matriz[i][j] == 0){
                         count_matriz_inferior++;
+                    }
+                    if(i > j && matriz[i][j] == 0){
+                        count_matriz_superior++;
                     }
                     if(i == j){
                         diagonal_datos[i] = matriz[i][j];
